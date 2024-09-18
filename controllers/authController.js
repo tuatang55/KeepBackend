@@ -1,7 +1,7 @@
 const { User } = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const checkEmail = require("../utils/emailValid")
+const checkEmail = require("../utils/stringValidation")
 require("dotenv").config();
 
 // login will send access token as json and refresh token as cookie
@@ -22,7 +22,7 @@ const login = async (req, res) => {
             const accessToken = jwt.sign(
                 { "userID": foundUser._id },
                 process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: '30s' }
+                { expiresIn: '5m' }
             );
             const refreshToken = jwt.sign(
                 { "userID": foundUser._id },

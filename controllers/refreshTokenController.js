@@ -10,7 +10,6 @@ const handleRefreshToken = async (req, res) => {
         
         const foundUser = await User.findOne({"refreshtoken": refreshToken}).exec();
         if (!foundUser) return res.sendStatus(403); // 403 forbidden
-        console.log(foundUser);
 
         jwt.verify(
             refreshToken,
@@ -20,7 +19,7 @@ const handleRefreshToken = async (req, res) => {
                 const accessToken = jwt.sign(
                     { "userID": foundUser._id },
                     process.env.ACCESS_TOKEN_SECRET,
-                    { expiresIn: '30s' }
+                    { expiresIn: '5m' } 
                 );
                 res.json({ accessToken })
             }

@@ -20,7 +20,7 @@ const accountSchema = mongoose.Schema({
         business: String, 
         role: String 
     }],
-    userId: mongoose.Schema.Types.ObjectId
+    userID: mongoose.Schema.Types.ObjectId
 }, { timestamps: true });
 
 const User = mongoose.model("users", userSchema);
