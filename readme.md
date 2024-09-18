@@ -15,5 +15,9 @@
 
 **COMPLETIONS**
 
-- registration
-- authentication
+- Registration
+- Authentication
+
+**IN PROGRESS**
+
+- Use cases which involved accounts
