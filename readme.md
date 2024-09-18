@@ -7,17 +7,24 @@
 - Install morgan for sending status to terminal  `npm install morgan`
 - Install jsonwebtoken for JWT authentication `npm install jsonwebtoken`
 - Install bcrypt for password encryption/decryption `npm install bcryptjs`
+- Install pdfkit for pdf creation `npm install pdfkit`
+
+**MONGODB INSTALLATION : WINDOWS**
+
+- https://www.mongodb.com/docs/manual/installation/
+- run services.msc and check if MongoDB server service is running
 
 **FOR FRONTEND TEAM**
 
 - Please delete access token when logout is pressed on the client.
 - Send access token for authentication
 
-**COMPLETIONS**
+**COMPLETED**
 
-- Registration
+- User Registration
 - Authentication
+- Account related use cases (>60%)
 
 **IN PROGRESS**
 
-- Use cases which involved accounts
+- More account related use cases
