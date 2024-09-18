@@ -6,7 +6,7 @@
 - Install mongoose for orm `npm install mongoose`
 - Install morgan for sending status to terminal  `npm install morgan`
 - Install jsonwebtoken for JWT authentication `npm install jsonwebtoken`
-- Install bcrypt for password encryption/decryption ``npm  install bcryptjs`
+- Install bcrypt for password encryption/decryption `npm install bcryptjs`
 
 **FOR FRONTEND TEAM**
 
