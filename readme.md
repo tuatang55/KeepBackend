@@ -7,7 +7,6 @@
 - Install morgan for sending status to terminal  `npm install morgan`
 - Install jsonwebtoken for JWT authentication `npm install jsonwebtoken`
 - Install bcrypt for password encryption/decryption `npm install bcryptjs`
-- Install pdfkit for pdf creation `npm install pdfkit`
 
 **MONGODB INSTALLATION : WINDOWS**
 
