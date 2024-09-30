@@ -17,6 +17,9 @@ app.use(express.json());
 // middleware for cookies
 app.use(cookieParser());
 
+// using static for public file access from frontend (direct path)
+app.use(express.static("public"));
+
 // database connection
 const connectDB = require("./config/databaseConfig.js");
 connectDB();
