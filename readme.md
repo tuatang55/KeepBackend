@@ -9,6 +9,8 @@
 - Install bcrypt for password encryption/decryption `npm install bcryptjs`
 - Install cookie-parser for cookie parsing `npm install cookie-parser`
 
+- if experiencing `command is not recognized in terminal for node` or something along the line. Please use `npm install -g` instead of normal install
+
 **MONGODB INSTALLATION : WINDOWS**
 
 - https://www.mongodb.com/docs/manual/installation/
