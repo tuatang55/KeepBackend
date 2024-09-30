@@ -12,17 +12,23 @@ const userSchema = mongoose.Schema({
     versionKey: false
 });
 
-const accountSchema = mongoose.Schema({
+// seperation of user and account for security and quering time reasons
+const businessRoles = ["BUSINESS_ADMIN", "ACCOUNTANT", "VIEWER"]
+
+const userAccountSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
     phone: String,
     activeRoles: [{
-        business: String, 
-        role: String 
+        businessID: String, 
+        role: {
+            type: String,
+            enum: businessRoles
+        }
     }],
     userID: mongoose.Schema.Types.ObjectId
 }, { timestamps: true });
 
 const User = mongoose.model("users", userSchema);
-const Account = mongoose.model("accounts", accountSchema);
+const Account = mongoose.model("accounts", userAccountSchema);
 module.exports = { User, Account };
