@@ -1,7 +1,7 @@
 const { User } = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const checkEmail = require("../utils/stringValidation")
+const { validateEmail } = require("../utils/stringValidation")
 require("dotenv").config();
 
 // login will send access token as json and refresh token as cookie
@@ -12,7 +12,7 @@ const login = async (req, res) => {
         if (!user || !pwd) return res.status(400).json({ "message": "Username/email and password are required!"}); // send error back as json
         
         let foundUser;
-        if (checkEmail(user)) foundUser = await User.findOne({"email": user}).exec(); // check if the username is in 
+        if (validateEmail(user)) foundUser = await User.findOne({"email": user}).exec(); // check if the username is in 
         else foundUser = await User.findOne({"username": user}).exec(); // 
         if (!foundUser) return res.sendStatus(401); // unauthorized
         
