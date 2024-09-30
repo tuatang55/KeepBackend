@@ -7,6 +7,7 @@
 - Install morgan for sending status to terminal  `npm install morgan`
 - Install jsonwebtoken for JWT authentication `npm install jsonwebtoken`
 - Install bcrypt for password encryption/decryption `npm install bcryptjs`
+- Install cookie-parser for cookie parsing `npm install cookie-parser`
 
 **MONGODB INSTALLATION : WINDOWS**
 
