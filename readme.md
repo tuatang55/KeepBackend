@@ -6,8 +6,11 @@
 - Install mongoose for orm `npm install mongoose`
 - Install morgan for sending status to terminal  `npm install morgan`
 - Install jsonwebtoken for JWT authentication `npm install jsonwebtoken`
-- Install bcrypt for password encryption/decryption `npm install bcryptjs`
-- Install pdfkit for pdf creation `npm install pdfkit`
+- Install bcrypt for password encryption/decryption `npm install bcrypt`
+- Install cookie-parser for cookie parsing `npm install cookie-parser`
+- Install dotenv `npm install dotenv`
+
+- if experiencing `command is not recognized in terminal for node` or something along the line. Please use `npm install -g` instead of normal install
 
 **MONGODB INSTALLATION : WINDOWS**
 
