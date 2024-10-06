@@ -1,16 +1,32 @@
+// Business related models -> Done (Maybe a second look should be good)
+
 const mongoose = require("mongoose");
 
 const businessSchema = mongoose.Schema({
-    businessName: String,
-    businessBranch: String,
-    businessAddr: String,
-    businessContact: String,
-    businessTaxID: String,
-    businessLogoUrl: String // how would you send the image from frontend to backend. I wondered.
-}, {
-    timestamps: false,
-    versionKey: false
-});
+    name: {
+        type: String,
+        required: true
+    },
+    branch: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    taxID: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    logoUrl: {
+        type: String
+    }
+}, { timestamps: true });
 
-const Business = mongoose.model("business", businessSchema);
+const Business = mongoose.model("business", businessSchema, "businesses");
 module.exports = { Business };

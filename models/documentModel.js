@@ -1,40 +1,134 @@
-const mongoose = require('mongoose');
+// Business related models -> Done
 
-// UNAPPROVED - Admin, Accountant can modify, delete the document no problemo
-// APPROVED - Admin, Accountant can only delete document in which it is still not in used by the company
-// USED - This document is already in used and cannot be modify, delete no more or else this might pose some problem for the business itself
-const documentStatus = ["UNAPPROVED", "APPROVED", "USED"];
+const mongoose = require('mongoose');
+const { DocumentStatus } = require("../enum");
+
+const documentBase = {
+    businessID: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    },
+    accountID: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    },
+    stakeholderID: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    },
+    documentNumber: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    documentStatus: {
+        type: Number,
+        enum: [
+            DocumentStatus.DRAFT,
+            DocumentStatus.WAIT_FOR_RESPONSE,
+            DocumentStatus.COMPLETED,
+            DocumentStatus.EXPIRED
+        ],
+        required: true
+    },
+    costBeforeTax: {
+        type: Number,
+        required: true
+    },
+    totalTax: {
+        type: Number,
+        required: true
+    },
+    totalCost: {
+        type: Number,
+        required: true
+    },
+    lineItems: [{
+        itemID: {
+            type: mongoose.Schema.Types.ObjectId
+        },
+        quantity: {
+            type: Number
+        },
+        totalCost: {
+            type: Number
+        }
+    }],
+    expiredAt: {
+        type: Date
+    },
+    creationCompletedAt: {
+        type: Date
+    }
+}
 
 const quotationSchema = mongoose.Schema({
-    businessID: mongoose.Schema.Types.ObjectId,
-    quotationNumber: String, // Needed another ID to identify each document by date and stuff
-    status: documentStatus
+    ...documentBase
 }, {
-    timestamps: true,
-    versionKey: true
+    timestamps: true
 });
 
 const invoiceSchema = mongoose.Schema({
-    businessID: mongoose.Schema.Types.ObjectId,
-    invoiceNumber: String, // Needed another ID to identify each document by date and stuff
-    status: documentStatus
+    ...documentBase,
+    quotationRef: {
+        type: String
+    },
+    credit: {
+        type: Number,
+        required: true
+    },
+    responseReceivedAt: {
+        type: Date
+    }
 }, {
-    timestamps: true,
-    versionKey: true
+    timestamps: true
 });
 
-const TaxInvoiceSchema = mongoose.Schema({
-    businessID: mongoose.Schema.Types.ObjectId,
-    taxInvoiceNumber: String, // Needed another ID to identify each document by date and stuff
-    status: documentStatus
+const taxInvoiceSchema = mongoose.Schema({
+    ...documentBase,
+    invoiceRef: {
+        type: String
+    }
 }, {
-    timestamps: true,
-    versionKey: true
+    timestamps: true
 });
 
-const Quotation = mongoose.model("quotations", quotationSchema);
-const Invoice = mongoose.model("invoices", invoiceSchema);
-const TaxInvoice = mongoose.model("tax_invoices", taxInvoiceSchema);
-const Receipt = mongoose.model("receipts", receiptSchema);
-const PurchaseOrder = mongoose.model("purchase_orders", purchaseOrderSchema);
-module.exports = { Quotation, Invoice, TaxInvoice, Receipt, PurchaseOrder }
+const receiptSchema = mongoose.Schema({
+    ...documentBase,
+    invoiceRef: {
+        type: String
+    }
+}, {
+    timestamps: true
+});
+
+const purchaseOrderSchema = mongoose.Schema({
+    ...documentBase,
+    responseReceivedAt: {
+        type: Date
+    }
+}, {
+    timestamps: true
+});
+
+const quotationCreator = (collectionName) => {
+    return mongoose.model("quotations", quotationSchema, collectionName);
+};
+
+const invoiceCreator = (collectionName) => {
+    return mongoose.model("invoices", invoiceSchema, collectionName);
+};
+
+const taxInvoiceCreator = (collectionName) => {
+    return mongoose.model("tax_invoices", taxInvoiceSchema, collectionName);
+};
+
+const receiptCreator = (collectionName) => {
+    return mongoose.model("quotations", receiptSchema, collectionName);
+};
+
+const purchaseOrderCreator = (collectionName) => {
+    return mongoose.model("purchase_orders", purchaseOrderSchema, collectionName);
+};
+
+module.exports = { quotationCreator, invoiceCreator, taxInvoiceCreator, receiptCreator, purchaseOrderCreator };

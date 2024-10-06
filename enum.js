@@ -25,17 +25,17 @@ const DocumentStatus = {
     EXPIRED: 3
 };
 
-const DocumentType = {
-    QUOTATION: 1,
-    INVOICE: 2,
-    TAX_INVOICE: 3,
-    RECEIPT: 4,
-    PURCHASE_ORDER: 5
-};
+// const DocumentType = {
+//     QUOTATION: 1,
+//     INVOICE: 2,
+//     TAX_INVOICE: 3,
+//     RECEIPT: 4,
+//     PURCHASE_ORDER: 5
+// };
 
-//////////////////////
-// Document Related //
-//////////////////////
+//////////////////
+// Item Related //
+//////////////////
 
 const ItemType = {
     PRODUCT: 0,
@@ -68,4 +68,13 @@ const FinancialChannelProviderType = {
     EWALLET: 1
 };
 
-module.exports = { NameTitle, BusinessRole, DocumentStatus, DocumentType, ItemType, TransactionStatus, TransactionType, BankAccountType, FinancialChannelProviderType };
+/////////////////////////
+// Stakeholder Related //
+/////////////////////////
+
+const StakeholderType = {
+    CLIENT: 0,
+    SUPPLIER: 1
+};
+
+module.exports = { NameTitle, BusinessRole, DocumentStatus, DocumentType, ItemType, TransactionStatus, TransactionType, BankAccountType, FinancialChannelProviderType, StakeholderType };

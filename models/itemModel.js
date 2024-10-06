@@ -28,13 +28,17 @@ const itemSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    quantityForInvoice: {
+        type: Number,
+        required: true
+    },
     unitType: {
         type: String
     },
-    itemImageUrl: {
+    imgUrl: {
         type: String
     }
-});
+}, { timestamps: true });
 
 const itemCreator = (collectionName) => {
     return mongoose.model("item", itemSchema, collectionName);
