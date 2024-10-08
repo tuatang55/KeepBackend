@@ -64,6 +64,9 @@ const userAccountSchema = new mongoose.Schema({
     phone: {
         type: String,
         required: true
+    },
+    imgUrl: {
+        type: String
     }
 }, { timestamps: true });
 

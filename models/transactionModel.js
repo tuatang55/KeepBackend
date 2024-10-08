@@ -1,4 +1,4 @@
-// Transaction related models -> Done (May need refactoring)
+// Transaction related models -> Editing (Add saving)
 
 const mongoose = require("mongoose");
 const { BankAccountType, TransactionType, FinancialChannelProviderType } = require("../enum");

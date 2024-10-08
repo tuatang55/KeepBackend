@@ -3,6 +3,8 @@ const express = require("express");
 const { readdirSync } = require("fs");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const fileUpload = require("express-fileupload");
+
 const PORT = 8000 || process.env.port;
 
 // init express instance
@@ -18,13 +20,16 @@ app.use(express.json());
 app.use(cookieParser());
 
 // using static for public file access from frontend (direct path)
-app.use(express.static("public"));
+// app.use(express.static("public"));
+app.use(fileUpload());
+
+app.use(bodyParser.json());
+
 
 // database connection
 const connectDB = require("./config/databaseConfig.js");
 connectDB();
 
-app.use(bodyParser.json());
 
 // to read 
 readdirSync('./routes').map((filename) => {

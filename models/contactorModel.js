@@ -1,34 +1,34 @@
 // StakeHolder related models -> Done
 
 const mongoose = require("mongoose");
-const { StakeholderType } = require("../enum");
+const { ContactorType } = require("../enum");
 
 // Item schema
-const stakeholderSchema = new mongoose.Schema({
+const contactorSchema = new mongoose.Schema({
     businessID: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },
-    stakeholderType: {
+    contactorType: {
         type: Number,
         enum: [
-            StakeholderType.CLIENT,
-            StakeholderType.SUPPLIER
+            ContactorType.CLIENT,
+            ContactorType.SUPPLIER
         ],
         required: true
     },
-    stakeholderName: {
+    contactorName: {
         type: String,
         required: true
     },
-    stakeholderPhone: {
+    contactorPhone: {
         type: String,
         required: true
     },
-    stakeholderBusinessName: {
+    businessName: {
         type: String
     },
-    stakeholderBusinessPhone: {
+    businessPhone: {
         type: String
     },
     address: {
@@ -44,8 +44,8 @@ const stakeholderSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-const stakeholderCreator = (collectionName) => {
-    return mongoose.model("stakeholders", stakeholderSchema, collectionName);
+const contactorCreator = (collectionName) => {
+    return mongoose.model("contactors", contactorSchema, collectionName);
 };
 
-module.exports = { stakeholderCreator }; 
+module.exports = { contactorCreator }; 

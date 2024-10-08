@@ -68,13 +68,13 @@ const FinancialChannelProviderType = {
     EWALLET: 1
 };
 
-/////////////////////////
-// Stakeholder Related //
-/////////////////////////
+///////////////////////
+// Contactor Related //
+///////////////////////
 
-const StakeholderType = {
+const ContactorType = {
     CLIENT: 0,
     SUPPLIER: 1
 };
 
-module.exports = { NameTitle, BusinessRole, DocumentStatus, DocumentType, ItemType, TransactionStatus, TransactionType, BankAccountType, FinancialChannelProviderType, StakeholderType };
+module.exports = { NameTitle, BusinessRole, DocumentStatus, ItemType, TransactionStatus, TransactionType, BankAccountType, FinancialChannelProviderType, ContactorType };
