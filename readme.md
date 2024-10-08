@@ -15,11 +15,12 @@
 - Please delete access token when logout is pressed on the client.
 - Send access token for authentication
 
-**COMPLETIONS**
+**COMPLETED**
 
-- Registration
+- User Registration
 - Authentication
+- Account related use cases (>60%)
 
 **IN PROGRESS**
 
-- Use cases which involved accounts
+- More account related use cases
